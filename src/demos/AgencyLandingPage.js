@@ -5,13 +5,13 @@ import AnimationRevealPage from "helpers/AnimationRevealPage.js";
 
 import Hero from "components/hero/BackgroundAsImage.js";
 import Features from "components/features/DashedBorderSixFeatures";
-import MainFeature from "components/features/TwoColSingleFeatureWithStats2.js";
+import Features2 from "components/features/ThreeColWithSideImageWithPrimaryBackground";
 import MainFeature2 from "components/features/TwoColWithTwoFeaturesAndButtons.js";
-import Portfolio from "components/cards/PortfolioTwoCardsWithImage.js";
+import { Step2 } from "components/steps/steps2";
 import Blog from "components/blogs/ThreeColSimpleWithImageAndDashedBorder.js";
-import Testimonial from "components/testimonials/TwoColumnWithImageAndProfilePictureReview.js";
+import Testimonial from "components/testimonials/SimplePrimaryBackground.js";
 import FAQ from "components/faqs/SimpleWithSideImage.js";
-import ContactUsForm from "components/forms/TwoColContactUsWithIllustration.js";
+import ContactUsForm from "components/forms/TwoColContactUsWithIllustrationFullForm";
 import Footer from "components/footers/MiniCenteredFooter.js";
 import customerSupportIllustrationSrc from "images/customer-support-illustration.svg";
 
@@ -19,15 +19,14 @@ export default () => (
   <AnimationRevealPage>
     <Hero />
     <Features />
+    <Features2/>
     <MainFeature2 />
     <Testimonial
-      subheading="Testimonials"
       heading={
-        <>
+        <div tw="text-white">
           Our Clients <span tw="text-primary-500">Love Us.</span>
-        </>
+        </div>
       }
-      description="Here are what some of our amazing customers are saying about our marketing professionals. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       testimonials={[
         {
           imageSrc:
@@ -56,7 +55,6 @@ export default () => (
       imageSrc={customerSupportIllustrationSrc}
       imageContain={true}
       imageShadow={false}
-      subheading="FAQs"
       heading={
         <>
           Do you have <span tw="text-primary-500">Questions ?</span>

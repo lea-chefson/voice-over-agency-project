@@ -10,7 +10,7 @@ import { ReactComponent as SvgDecoratorBlob1 } from "../../images/svg-decorator-
 import { ReactComponent as SvgDecoratorBlob2 } from "../../images/svg-decorator-blob-3.svg";
 
 const Container = tw.div`relative`;
-const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
+const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24 text-black`;
 const ThreeColumn = tw.div`flex flex-col items-center lg:items-stretch lg:flex-row flex-wrap`;
 const Column = tw.div`mt-24 lg:w-1/3`;
 
@@ -84,9 +84,7 @@ export default ({
     <Container>
       <Content>
         <HeadingInfoContainer>
-          {subheading && <Subheading>{subheading}</Subheading>}
           <HeadingTitle>{heading}</HeadingTitle>
-          <HeadingDescription>{description}</HeadingDescription>
         </HeadingInfoContainer>
         <ThreeColumn>
           {blogPosts.map((post, index) => (

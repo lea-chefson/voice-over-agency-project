@@ -1,14 +1,19 @@
-import React from "react";
+
 import { motion } from "framer-motion";
 import tw from "twin.macro";
 import styled from "styled-components";
+import 'tw-elements';
+import React, {useState} from "react";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
 import useAnimatedNavToggler from "../../helpers/useAnimatedNavToggler.js";
 
-import logo from "../../images/logo.svg";
+
+import logo from "../../images/logo.jpg";
 import { ReactComponent as MenuIcon } from "feather-icons/dist/icons/menu.svg";
 import { ReactComponent as CloseIcon } from "feather-icons/dist/icons/x.svg";
+
+
 
 const Header = tw.header`
   flex justify-between items-center
@@ -20,7 +25,7 @@ export const NavLinks = tw.div`inline-block`;
 /* hocus: stands for "on hover or focus"
  * hocus:bg-primary-700 will apply the bg-primary-700 class on hover or focus
  */
-export const NavLink = tw.a`
+export const NavLink = tw.button`
   text-lg my-2 lg:text-sm lg:mx-6 lg:my-0
   font-semibold tracking-wide transition duration-300
   pb-1 border-b-2 border-transparent hover:border-primary-500 hocus:text-primary-500
@@ -32,12 +37,15 @@ export const PrimaryLink = tw(NavLink)`
   hocus:bg-primary-700 hocus:text-gray-200 focus:shadow-outline
   border-b-0
 `;
+const PlanDurationSwitcher = tw.div`block w-1/4 m-auto max-w-xs sm:inline-block sm:w-auto border-2 rounded-full px-0 py-0 `;
+export const toggleButton = tw.input`
+w-1 h-1 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600`;
 
 export const LogoLink = styled(NavLink)`
   ${tw`flex items-center font-black border-b-0 text-2xl! ml-0!`};
 
   img {
-    ${tw`w-10 mr-3`}
+    ${tw`w-12 mr-3`}
   }
 `;
 
@@ -56,7 +64,17 @@ export const DesktopNavLinks = tw.nav`
   hidden lg:flex flex-1 justify-between items-center
 `;
 
-export default ({ roundedHeaderButton = false, logoLink, links, className, collapseBreakpointClass = "lg" }) => {
+export default ({ roundedHeaderButton = false, logoLink, links, className, collapseBreakpointClass = "lg" ,
+planDurations = [
+  {
+    text: "eng",
+    switcherText: "eng",
+  },
+  {
+    text: "ไทย",
+    switcherText: "ไทย",
+  }
+]}) => {
   /*
    * This header component accepts an optionals "links" prop that specifies the links to render in the navbar.
    * This links props should be an array of "NavLinks" components which is exported from this file.
@@ -75,38 +93,60 @@ export default ({ roundedHeaderButton = false, logoLink, links, className, colla
       <NavLink href="/#">About</NavLink>
       <NavLink href="/#">Blog</NavLink>
       <NavLink href="/#">Pricing</NavLink>
-      <NavLink href="/#">Contact Us</NavLink>
+      <NavLink href="/AboutUs">Contact Us</NavLink>
       <NavLink href="/#" tw="lg:ml-12!">
         Login
       </NavLink>
+      
       <PrimaryLink css={roundedHeaderButton && tw`rounded-full`}href="/#">Sign Up</PrimaryLink>
     </NavLinks>
   ];
+
+
 
   const { showNavLinks, animation, toggleNavbar } = useAnimatedNavToggler();
   const collapseBreakpointCss = collapseBreakPointCssMap[collapseBreakpointClass];
 
   const defaultLogoLink = (
     <LogoLink href="/">
-      <img src={logo} alt="logo" />
-      Voice Over
+      <img tw="border border-primary-500 rounded" src={logo} alt="logo" />
+      TVAA
     </LogoLink>
   );
+  
+  const SwitchButton = styled.button`
+  ${tw`w-1/2 px-0 sm:px-2 py-2 rounded-full focus:outline-none text-xs font-bold text-gray-700 transition duration-300`}
+  ${props => props.active && tw`bg-primary-500 text-gray-100`}
+`;
+
 
   logoLink = logoLink || defaultLogoLink;
   links = links || defaultLinks;
+
+  const [activeDurationIndex, setActiveDurationIndex] = useState(0);
 
   return (
     <Header className={className || "header-light"}>
       <DesktopNavLinks css={collapseBreakpointCss.desktopNavLinks}>
         {logoLink}
         {links}
+       
+        <div tw="flex text-sm divide-x-2 rounded dark:text-gray-100 divide-primary-500">
+	<button type="button" tw="px-3 py-1">EN</button>
+	<button type="button" tw="px-3 py-1">TH</button>
+</div>
       </DesktopNavLinks>
+
 
       <MobileNavLinksContainer css={collapseBreakpointCss.mobileNavLinksContainer}>
         {logoLink}
         <MobileNavLinks initial={{ x: "150%", display: "none" }} animate={animation} css={collapseBreakpointCss.mobileNavLinks}>
           {links}
+          <PlanDurationSwitcher>
+          {planDurations.map((planDuration, index) => (
+            <SwitchButton active={activeDurationIndex === index} key={index} onClick={() => setActiveDurationIndex(index)}>{planDuration.switcherText}</SwitchButton>
+          ))}
+        </PlanDurationSwitcher>
         </MobileNavLinks>
         <NavToggle onClick={toggleNavbar} className={showNavLinks ? "open" : "closed"}>
           {showNavLinks ? <CloseIcon tw="w-6 h-6" /> : <MenuIcon tw="w-6 h-6" />}

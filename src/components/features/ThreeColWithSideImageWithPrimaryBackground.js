@@ -15,19 +15,38 @@ import FastIconImage from "images/fast-icon.svg";
 import ReliableIconImage from "images/reliable-icon.svg";
 import SimpleIconImage from "images/simple-icon.svg";
 
-const Container = tw.div`relative bg-primary-900 -mx-8 px-8 text-gray-100`;
+const Container = styled.div`
+${tw`relative bg-black -mx-8 px-8 text-gray-100 py-16 flex justify-center`}
+
+.description {
+  ${tw`mt-2 font-normal text-gray-400 text-lg leading-snug`}
+}
+
+.title {
+  ${tw`tracking-wider text-primary-500 font-bold text-xl leading-none`}
+}
+
+.titleFinal {
+  ${tw`tracking-wider text-primary-400 font-bold text-xl leading-none text-2xl p-2 border-2 rounded-md `}
+}
+
+svg {
+  ${tw`w-4 text-primary-500`}
+}
+`;
 
 const ThreeColumnContainer = styled.div`
-  ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-24`}
+  ${tw`flex flex-col  items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mb-12 mt-6`}
 `;
 const Subheading = tw(SubheadingBase)`mb-4 text-gray-100`;
-const Heading = tw(SectionHeading)`w-full`;
-const Description = tw(SectionDescription)`w-full text-center text-gray-300`;
+const Heading = tw(SectionHeading)`w-full my-10`;
+const Description = tw(SectionDescription)`w-full text-center text-gray-300 py-5`;
 
-const VerticalSpacer = tw.div`mt-10 w-full`;
+const VerticalSpacer = tw.div`mt-2 w-full`;
 
 const Column = styled.div`
   ${tw`md:w-1/2 lg:w-1/3 max-w-xs`}
+
 `;
 
 const Card = styled.div`
@@ -47,14 +66,11 @@ const Card = styled.div`
     ${tw`tracking-wider font-bold text-xl leading-none`}
   }
 
-  .description {
-    ${tw`mt-2 font-normal text-gray-400 leading-snug`}
-  }
 `;
 
 export default ({
   cards = null,
-  heading = "Amazing Features",
+  heading = "How it works",
   subheading = "",
   description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 }) => {
@@ -74,9 +90,6 @@ export default ({
     },
     { imageSrc: SupportIconImage, title: "24/7 Support" },
     { imageSrc: CustomizeIconImage, title: "Customizable" },
-    { imageSrc: ReliableIconImage, title: "Reliable" },
-    { imageSrc: FastIconImage, title: "Fast" },
-    { imageSrc: SimpleIconImage, title: "Easy" }
   ];
 
   if (!cards) cards = defaultCards;
@@ -85,24 +98,158 @@ export default ({
     <Container>
       <ThreeColumnContainer>
         {subheading && <Subheading>{subheading}</Subheading>}
-        <Heading>{heading}</Heading>
-        {description && <Description>{description}</Description>}
-        <VerticalSpacer />
-        {cards.map((card, i) => (
-          <Column key={i}>
-            <Card>
-              <span className="imageContainer">
-                <img src={card.imageSrc || defaultCardImage} alt="" />
-              </span>
-              <span className="textContainer">
-                <span className="title">{card.title || "Fully Secure"}</span>
+        <Heading>How it <span tw="text-primary-500">works</span></Heading>
+      
+      <div tw="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-10">
+        <div tw="grid gap-6 gap-10 lg:grid-cols-2">
+          <div tw="lg:py-6 lg:pr-32">
+            <div tw="flex">
+              <div tw="flex flex-col items-center mr-4">
+                <div>
+                  <div tw="flex items-center justify-center w-10 h-10 border-2 border-primary-500 rounded-full bg-white">
+                    <svg
+                      tw="w-4 text-primary-500"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      viewBox="0 0 24 24"
+                    >
+                      <line
+                        fill="none"
+                        strokeMiterlimit="10"
+                        x1="12"
+                        y1="2"
+                        x2="12"
+                        y2="22"
+                      />
+                      <polyline
+                        fill="none"
+                        strokeMiterlimit="10"
+                        points="19,15 12,22 5,15"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div tw="w-px h-full bg-primary-500" />
+              </div>
+              <div tw="pt-1 pb-8">
+                <p className="title">Step 1</p>
                 <p className="description">
-                  {card.description || "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud."}
+                Show us what you're looking for.
                 </p>
-              </span>
-            </Card>
-          </Column>
-        ))}
+              </div>
+            </div>
+            <div tw="flex">
+              <div tw="flex flex-col items-center mr-4">
+                <div>
+                  <div tw="flex items-center justify-center w-10 h-10 border-2 border-primary-500 rounded-full bg-white">
+                    <svg
+                      tw="w-4 text-white"
+                      stroke="currentColor"
+                     strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      viewBox="0 0 24 24"
+                    >
+                      <line
+                        fill="none"
+                        strokeMiterlimit="10"
+                        x1="12"
+                        y1="2"
+                        x2="12"
+                        y2="22"
+                      />
+                      <polyline
+                        fill="none"
+                        strokeMiterlimit="10"
+                        points="19,15 12,22 5,15"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div tw="w-px h-full bg-primary-500" />
+              </div>
+              <div tw="pt-1 pb-8">
+                <p className="title">Step 2</p>
+                <p className="description">
+                Receive a free consultation from our team.
+                </p>
+              </div>
+            </div>
+            <div tw="flex">
+              <div tw="flex flex-col items-center mr-4">
+                <div>
+                  <div tw="flex items-center justify-center w-10 h-10 border-2 border-primary-500 rounded-full bg-white">
+                    <svg
+                      tw="w-4 text-white"
+                      stroke="currentColor"
+                     strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      viewBox="0 0 24 24"
+                    >
+                      <line
+                        fill="none"
+                        strokeMiterlimit="10"
+                        x1="12"
+                        y1="2"
+                        x2="12"
+                        y2="22"
+                      />
+                      <polyline
+                        fill="none"
+                        strokeMiterlimit="10"
+                        points="19,15 12,22 5,15"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div tw="w-px h-full bg-primary-500" />
+              </div>
+              <div tw="pt-1 pb-8">
+                <p className="title">Step 3</p>
+                <p className="description">
+                Get the job done.
+                </p>
+              </div>
+            </div>
+            <div tw="flex">
+              <div tw="flex flex-col items-center mr-4">
+                <div>
+                  <div tw="flex items-center justify-center w-10 h-10 border-2 border-primary-500 rounded-full bg-white">
+                    <svg
+                      tw="w-6 text-white"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <polyline
+                        fill="none"
+                       strokeWidth="6"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeMiterlimit="10"
+                        points="6,12 10,16 18,8"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div tw="pt-1">
+                <p className="titleFinal">Success!</p>
+                <p className="description" />
+              </div>
+            </div>
+          </div>
+          <div tw="relative">
+            <img
+              tw="inset-0 object-cover object-bottom w-full rounded shadow-lg h-96 lg:absolute lg:h-full"
+              src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
       </ThreeColumnContainer>
     </Container>
   );

@@ -6,6 +6,10 @@ import { SectionHeading, Subheading as SubheadingBase } from "components/misc/He
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import { ReactComponent as BriefcaseIcon } from "feather-icons/dist/icons/briefcase.svg";
 import { ReactComponent as MoneyIcon } from "feather-icons/dist/icons/dollar-sign.svg";
+import {ReactComponent as Repeat} from "feather-icons/dist/icons/repeat.svg";
+import {ReactComponent as Thumb} from "feather-icons/dist/icons/thumbs-up.svg";
+import {ReactComponent as Feather} from "feather-icons/dist/icons/feather.svg";
+
 import TeamIllustrationSrc from "images/team-illustration-2.svg";
 
 const Container = tw.div`relative`;
@@ -26,11 +30,11 @@ const TextContent = tw.div`lg:py-8 text-center md:text-left`;
 const Subheading = tw(SubheadingBase)`text-center md:text-left`;
 const Heading = tw(
   SectionHeading
-)`mt-4 font-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
-const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-secondary-100`;
+)`mt-12 font-black text-black text-left text-3xl sm:text-4xl lg:text-5xl text-center md:text-left leading-tight`;
+const Description = tw.p`mt-4 text-center md:text-left text-sm md:text-base lg:text-lg font-medium leading-relaxed text-black`;
 
-const Features = tw.div`mt-8 max-w-sm mx-auto md:mx-0`;
-const Feature = tw.div`mt-8 flex items-start flex-col md:flex-row`;
+const Features = tw.div`mt-8 mx-auto md:mx-0 grid grid-cols-2 auto-cols-auto w-full`;
+const Feature = tw.div`mt-8 flex items-start flex-col md:flex-row mx-2`;
 
 const FeatureIconContainer = styled.div`
   ${tw`mx-auto inline-block border border-primary-500 text-center rounded-full p-2 flex-shrink-0`}
@@ -49,11 +53,11 @@ export default ({
   subheading = "Our Expertise",
   heading = (
     <>
-      We have the most <span tw="text-primary-500">professional</span> marketing team.
+      We have the most <span tw="text-primary-500">professional</span> voice over team.
     </>
   ),
-  description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  primaryButtonText = "See Our Portfolio",
+  description = "We know what it takes to deliver impactful communications. Let us help you achieve your vision and connect with your audience.  ",
+  primaryButtonText = "Browse voice talents",
   primaryButtonUrl = "https://timerse.com",
   features = null,
   textOnLeft = true
@@ -67,13 +71,23 @@ export default ({
   const defaultFeatures = [
     {
       Icon: BriefcaseIcon,
-      title: "Professionalism",
-      description: "We have the best professional marketing people across the globe just to work with you."
+      title: "Professional",
+      description: "First Take means first-class services from professional voice artists, creatives, and consultants."
     },
     {
-      Icon: MoneyIcon,
-      title: "Affordable",
-      description: "We promise to offer you the best rate we can - at par with the industry standard."
+      Icon: Repeat,
+      title: "Consistency",
+      description: "Our quality isn’t a fluke. We train our talents to deliver peak performance every time."
+    },
+    {
+      Icon: Feather,
+      title: "Creative Collaboration",
+      description: "Not sure what you need? Book a consultation for expert insights and creative recommendations.      "
+    },
+    {
+      Icon: Thumb,
+      title: "Proven Experience",
+      description: "We’ve seen it all. Our industry-proven creatives have decades of experience in delivering effective results."
     }
   ];
 
@@ -87,7 +101,6 @@ export default ({
         </ImageColumn>
         <TextColumn textOnLeft={textOnLeft}>
           <TextContent>
-            <Subheading>{subheading}</Subheading>
             <Heading>{heading}</Heading>
             <Description>{description}</Description>
             <Features>

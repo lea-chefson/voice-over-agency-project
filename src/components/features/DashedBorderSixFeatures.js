@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import tw from "twin.macro";
+import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
 import { SectionHeading } from "components/misc/Headings.js";
@@ -14,7 +15,6 @@ import VoiceIconImage from "../../images/VoiceIconImage.svg";
 import WriteIconImage from "../../images/WriteIconImage.svg";
 import SpeechIconImage from "../../images/SpeechIconImage.svg";
 import TranslationIconImage from "../../images/TranslationIconImage.svg";
-import PenIconImage from "../../images/PenIconImage.svg";
 
 const Container = tw.div`relative`;
 
@@ -28,7 +28,7 @@ const Column = styled.div`
 `;
 
 const Card = styled.div`
-  ${tw`flex flex-col mx-auto max-w-xs items-center px-6 py-10 border-2 border-dashed border-primary-500 rounded-lg mt-12`}
+  ${tw`flex flex-col mx-auto max-w-xs items-center px-4 py-6 border-2 border-dashed border-primary-500 rounded-lg mt-12`}
   .imageContainer {
     ${tw`border-2 border-primary-500 text-center rounded-full p-6 flex-shrink-0 relative`}
     img {
@@ -45,9 +45,14 @@ const Card = styled.div`
   }
 
   .description {
-    ${tw`mt-3 font-semibold text-secondary-100 text-sm leading-loose`}
+    ${tw`mt-3 h-32 font-semibold text-black text-sm leading-loose`}
   }
+
 `;
+
+const Link = styled(PrimaryButtonBase).attrs({as: "a"})`
+  ${tw`inline-block mt-2 text-sm font-semibold`}
+`
 
 const DecoratorBlob = styled(SvgDecoratorBlob3)`
   ${tw`pointer-events-none absolute right-0 bottom-0 w-64 opacity-25 transform translate-x-32 translate-y-48 `}
@@ -66,12 +71,17 @@ export default () => {
     {
       imageSrc: MikeIconImage,
       title: "Voice Over",
+      description:"Rely on commercial voice actors to create powerful radio & TV commercials, promotional videos, and corporate training videos."
     },
-    { imageSrc: SpeechIconImage, title: "Event hosting/MC" },
-    { imageSrc: VoiceIconImage, title: "Dubbing" },
-    { imageSrc: TranslationIconImage, title: "Translation" },
-    { imageSrc: WriteIconImage, title: "Copywriting" },
-    { imageSrc: PenIconImage, title: "Content writing" }
+     { imageSrc: VoiceIconImage, title: "Dubbing",
+  description:"Tell captivating stories with commercial voice actors for video games, cartoons, movies, series, or documentaries." },
+    { imageSrc: TranslationIconImage, title: "Translation",
+  description:"Rely native translators to localize your message for meaningful engagement with target audiences in Thailand." },
+    { imageSrc: WriteIconImage, title: "Copywriting",
+   description:"Outsource creative copywriting for potent voice-over scripts, web copy, blog posts, and #socialmedia."},
+    { imageSrc: SpeechIconImage, title: "Event Hosts & Emcees (MC)",
+    description:"Partner with emcees with experience managing corporate gatherings, trade shows, product launches, competitions, and wedding ceremonies."
+  },
   ];
 
   return (
@@ -89,6 +99,7 @@ export default () => {
                 <p className="description">
                   {card.description || "Lorem ipsum donor amet siti ceali ut enim ad minim veniam, quis nostrud. Sic Semper Tyrannis. Neoas Calie artel."}
                 </p>
+                <Link href="#">Learn more</Link>
               </span>
             </Card>
           </Column>
