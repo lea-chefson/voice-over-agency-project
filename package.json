@@ -2,6 +2,7 @@
   "name": "treact",
   "version": "0.1.0",
   "private": true,
+  "homepage": "git@github.com:lea-chefson/voice-over-agency-project.git",
   "dependencies": {
     "@headlessui/react": "^1.7.3",
     "@heroicons/vue": "^2.0.12",
@@ -35,7 +36,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "yarn build && netlify deploy --prod --dir=build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app",
@@ -63,6 +65,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "tailwindcss": "^3.1.8"
   }
 }
