@@ -15,8 +15,6 @@ export default function App() {
 
 
   return (
-
-    <BrowserRouter basename="/voice-over-agency-project">
     <>
       <GlobalStyles />
       <Router>
@@ -26,6 +24,5 @@ export default function App() {
         </Routes>
       </Router>
     </>
-    </BrowserRouter>
   );
 }
