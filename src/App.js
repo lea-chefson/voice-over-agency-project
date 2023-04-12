@@ -6,23 +6,22 @@ import { css } from "styled-components/macro"; //eslint-disable-line
  import AboutUsPage from "pages/AboutUs.js";
 
 
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+ import { BrowserRouter, Route, Switch, Routes } from 'react-router-dom';
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
-  // return <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
+  // r>eturn <AnimationRevealPage disabled>xxxxxxxxxx</AnimationRevealPage>;
 
 
   return (
     <>
-      <GlobalStyles />
-      <Router>
-        <Routes>
-          <Route path="/" element={<AgencyLandingPage />} />
-          <Route path="/AboutUs" element={<AboutUsPage />} />
-        </Routes>
-      </Router>
+    <GlobalStyles />
+    <BrowserRouter basename="/">
+      <Routes>
+        <Route path="/" element={<AgencyLandingPage />} />
+        <Route path="/AboutUs" element={<AboutUsPage />} />
+      </Routes>
+    </BrowserRouter>
     </>
   );
 }
