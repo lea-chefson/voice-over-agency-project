@@ -16,7 +16,7 @@ export default function App() {
   return (
     <>
     <GlobalStyles />
-    <BrowserRouter basename="/">
+    <BrowserRouter basename="/voice-over-agency-project">
       <Routes>
         <Route path="/" element={<AgencyLandingPage />} />
         <Route path="/AboutUs" element={<AboutUsPage />} />
