@@ -2,7 +2,7 @@
   "name": "treact",
   "version": "0.1.0",
   "private": true,
-  "homepage": "git@github.com:lea-chefson/voice-over-agency-project.git",
+  "homepage": "https://lea-chefson.github.io/voice-over-agency-project",
   "dependencies": {
     "@headlessui/react": "^1.7.3",
     "@heroicons/vue": "^2.0.12",
